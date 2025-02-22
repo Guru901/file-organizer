@@ -20,7 +20,7 @@ fn main() {
 
                 if let Some(extension) = extensions.clone() {
                     make_dirs(extension.to_str().unwrap());
-                    // move files
+                    move_files(path.display().to_string(), extension.to_str().unwrap());
                 }
             }
         }
@@ -33,4 +33,8 @@ fn make_dirs(name: &str) {
         .arg(name.to_string() + "s")
         .spawn()
         .unwrap();
+}
+
+fn move_files(name: String, path: &str) {
+    Command::new("mv").arg(name).arg(path).spawn().unwrap();
 }
