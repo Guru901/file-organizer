@@ -1,5 +1,6 @@
 use std::env;
 use std::fs;
+use std::process::Command;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -18,11 +19,18 @@ fn main() {
                 let extensions = path.extension();
 
                 if let Some(extension) = extensions.clone() {
-                    // make directories
+                    make_dirs(extension.to_str().unwrap());
                     // move files
                 }
             }
         }
         Err(e) => println!("Error: {}", e),
     });
+}
+
+fn make_dirs(name: &str) {
+    Command::new("mkdir")
+        .arg(name.to_string() + "s")
+        .spawn()
+        .unwrap();
 }
