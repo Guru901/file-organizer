@@ -30,7 +30,7 @@ fn make_dirs(name: &str) {
     Command::new("mkdir")
         .arg(name.to_string() + "s")
         .spawn()
-        .expect("coudlnt make directory");
+        .expect("couldn't create directory");
 }
 
 fn move_files(name: String, path: &str) {
