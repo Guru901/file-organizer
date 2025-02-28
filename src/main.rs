@@ -32,7 +32,7 @@ fn make_dirs(name: &str) {
     Command::new("mkdir")
         .arg(name.to_string() + "s")
         .spawn()
-        .unwrap();
+        .expect("coudlnt make directory");
 }
 
 fn move_files(name: String, path: &str) {
